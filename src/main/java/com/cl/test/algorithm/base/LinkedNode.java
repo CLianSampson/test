@@ -9,6 +9,6 @@ public class LinkedNode {
 
     public int val;
 
-    public LinkedNode left;
+    public LinkedNode next;
 
 }

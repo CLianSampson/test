@@ -22,14 +22,33 @@ public class MyLinkedList {
         if (nums.length == 0) return null;
 
         LinkedNode head = null;
+        LinkedNode current = null;
         for (int val : nums) {
             if (head == null){
                 head = new LinkedNode();
+                current = head;
+                continue;
             }
+
+            LinkedNode node = new LinkedNode();
+            node.val = val;
+
+            current.next = node;
+            current = node;
         }
 
-        return null;
+        return head;
     }
 
+
+
+    public void traversal(LinkedNode head){
+        if (head == null) return;
+
+        while (head != null) {
+            System.out.println(head.next.val);
+            head = head.next;
+        }
+    }
 
 }

@@ -57,7 +57,7 @@ public class QuickSort {
         while (i<j){
             while (i<j && curr < nums[j]) j--;
             nums[i] = nums[j];
-            while (i<j && curr > nums[j]) i++;
+            while (i<j && curr > nums[i]) i++;
             nums[j] = nums[i];
         }
 
