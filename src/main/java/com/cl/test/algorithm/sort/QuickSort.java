@@ -7,7 +7,8 @@ package com.cl.test.algorithm.sort;
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] nums = {7,8,2,9,3,1,90,88,33};
+        //int[] nums = {7,8,2,9,3,1,90,88,33};
+        int[] nums = {100,85,99,46,88,77,99};
         quickSort(nums,0,nums.length-1);
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
@@ -55,9 +56,9 @@ public class QuickSort {
         int curr = nums[i];
 
         while (i<j){
-            while (i<j && curr < nums[j]) j--;
+            while (i<j && curr <= nums[j]) j--;
             nums[i] = nums[j];
-            while (i<j && curr > nums[i]) i++;
+            while (i<j && curr >= nums[i]) i++;
             nums[j] = nums[i];
         }
 
