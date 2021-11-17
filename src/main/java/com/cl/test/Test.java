@@ -40,27 +40,31 @@ public class Test {
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
         }
+
+        List list = new ArrayList();
+        list.add(null);
+        System.out.println("dfafsafdsfdsfdsf");
     }
 
 
     public static void quickSort(int[] nums,int l,int r){
-        if (l >= r) return;
+       if (l >= r) return;
 
-        int i = l;
-        int j = r;
-        int curr = nums[i];
+       int i = l;
+       int j = r;
+       int curr = nums[i];
 
-        while (i<j){
-            while (i<j && curr<=nums[j]) j--;
-            nums[i] = nums[j];
-            while (i<j && curr>=nums[i]) i++;
-            nums[j] = nums[i];
-        }
+       while (i < j){
+           while (i < j && curr <= nums[j]) j--;
+           nums[i] = nums[j];
+           while (i < j && curr >= nums[i]) i++;
+           nums[j] = nums[i];
+       }
 
-        nums[i] =curr;
+       nums[i] = curr;
 
-        quickSort(nums,l,i-1);
-        quickSort(nums,i+1,r);
+       quickSort(nums,l,i-1);
+       quickSort(nums,i+1,r);
     }
 
 
