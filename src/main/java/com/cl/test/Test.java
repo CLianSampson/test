@@ -48,6 +48,8 @@ public class Test {
 
 
     public static void quickSort(int[] nums,int l,int r){
+
+        //****************************
        if (l >= r) return;
 
        int i = l;
