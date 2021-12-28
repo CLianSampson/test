@@ -48,6 +48,20 @@
             <version>5.7.12</version>
         </dependency>
 
+        <!--java字节码相关-->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.28.0-GA</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>9.2</version>
+        </dependency>
+        <!--java字节码相关-->
+
     </dependencies>
 
     <build>
