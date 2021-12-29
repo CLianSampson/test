@@ -15,6 +15,20 @@ import java.util.*;
 public class Test {
 
     public static void main(String[] args) throws ParseException {
+        testDiffDistance();
+    }
+
+
+    public static  void  testDiffDistance(){
+        BigDecimal estimateDistance = new BigDecimal("109.50");
+        BigDecimal normalDistance = new BigDecimal("0.0");
+        BigDecimal test = new BigDecimal(normalDistance.subtract(estimateDistance).doubleValue());
+
+        //System.out.println(normalDistance.subtract(estimateDistance).doubleValue());
+        System.out.println(test);
+    }
+
+    public static void testQuickSort(){
         BigDecimal rate = new BigDecimal(30).divide(new BigDecimal(31),15,BigDecimal.ROUND_HALF_DOWN);
         System.out.println(rate.doubleValue());
 
