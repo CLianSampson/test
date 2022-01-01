@@ -20,5 +20,7 @@ public class Student {
         System.out.println("hello world");
         System.out.println("aaaaaaaaaaaaa");
         System.out.println("aaaaaaaaaaaaa");
+System.out.println("hello world");
+System.out.println("hello world");
     }
 }
