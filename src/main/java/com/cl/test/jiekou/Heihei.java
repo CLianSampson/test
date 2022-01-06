@@ -6,9 +6,8 @@ package com.cl.test.jiekou;
  */
 public class Heihei implements Person{
 
-
     @Override
     public void eat() {
-
+        System.out.println("hei start eat");
     }
 }

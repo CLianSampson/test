@@ -1,12 +1,14 @@
 package com.cl.test.model;
 
+import com.cl.test.jiekou.Person;
+
 import java.util.ArrayList;
 
 /**
  * @author chen lian
  * @date 2021年11月01日 15:16
  */
-public class Student {
+public class Student implements Person {
 
    private String name;
 
@@ -16,6 +18,11 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("start eat .....");
     }
 
     public static void main(String[] args) {
