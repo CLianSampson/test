@@ -1,5 +1,6 @@
 package com.cl.test.init;
 
+import com.cl.test.config.TestCityName;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -19,7 +20,7 @@ public class MyRunner implements ApplicationRunner, ApplicationContextAware {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        String cityName = (String) applicationContext.getBean("cityName");
+        TestCityName cityName = (TestCityName) applicationContext.getBean("cityName");
         System.out.println(cityName);
     }
 
