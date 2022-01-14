@@ -84,6 +84,11 @@
         </dependency>
         <!--java字节码相关-->
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

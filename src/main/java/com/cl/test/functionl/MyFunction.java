@@ -1,5 +1,6 @@
 package com.cl.test.functionl;
 
+import com.cl.test.jiekou.Person;
 import com.cl.test.model.Student;
 
 import java.util.function.Supplier;
@@ -19,12 +20,17 @@ public class MyFunction {
 //            }
 //        };
 
-        test(new Supplier<Student>() {
-            @Override
-            public Student get() {
-                System.out.println("生成者。。。。");
-                return new Student();
-            }
+
+//        test(new Supplier<Student>() {
+//            @Override
+//            public Student get() {
+//                System.out.println("生成者。。。。");
+//                return new Student();
+//            }
+//        });
+
+        test(()->{
+            return new Student();
         });
 
 
