@@ -96,6 +96,12 @@
             <version>2.6.10</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr-master</artifactId>
+            <version>3.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>

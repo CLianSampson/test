@@ -10,12 +10,45 @@ public class Today {
 
     public static void main(String[] args) {
         int[] nums = {55,12,52,1,8,6,100,100,52};
+        //quickSort(nums,0,nums.length-1);
+        //bubbleSortttt(nums);
         quickSort(nums,0,nums.length-1);
-//        bubbleSortttt(nums);
+        //bubbleSort0620(nums);
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
         }
     }
+
+
+    public static void quickSort0620(int[] nums,int l,int r){
+        int i = l;
+        int j = r;
+        int curr = nums[i];
+        while (i<j && nums[j] >= curr) j--;
+        nums[j] = nums[i];
+        while (i<j && nums[i] < curr) i++;
+        nums[i] = nums[j];
+
+        nums[i] = curr;
+        quickSort(nums,0,i);
+        quickSort(nums,i+1,r);
+    }
+
+
+    public static void  bubbleSort0620(int[] nums){
+        int l = nums.length;
+        for (int i = 0; i < l; i++) {
+            for (int j = i+1; j < l; j++) {
+                if (nums[i] > nums[j]){
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+        }
+    }
+
+
 
 
 
