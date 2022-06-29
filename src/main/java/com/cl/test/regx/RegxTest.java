@@ -1,6 +1,5 @@
 package com.cl.test.regx;
 
-import java.io.PushbackInputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +21,16 @@ public class RegxTest {
      */
     public static void main(String[] args) {
         //demoCainiao();
-        testUrl();
+        //testUrl();
+        test_();
+    }
+
+
+    public static void test_(){
+        String pattern = "a{4,}-?";
+        String line = "aaaa-";
+        boolean matches = Pattern.matches(pattern, line);
+        System.out.println(matches);
     }
 
 

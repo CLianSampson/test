@@ -12,12 +12,80 @@ public class Today {
         int[] nums = {55,12,52,1,8,6,100,100,52};
         //quickSort(nums,0,nums.length-1);
         //bubbleSortttt(nums);
-        quickSort(nums,0,nums.length-1);
+        //quickSort(nums,0,nums.length-1);
         //bubbleSort0620(nums);
+        //quickSort0623(nums,0,nums.length-1);
+        //quickSort0624(nums,0,nums.length-1);
+        quickSort0629(nums,0,nums.length-1);
+
+
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
         }
     }
+
+
+    public static void quickSort0629(int[] nums,int l, int r){
+        if (l>=r) return;
+        int i = l;
+        int j = r;
+        int curr = nums[i];
+        while (i<j && nums[j] > curr) j--;
+        nums[i] = nums[j];
+        while (i<j && nums[i] < curr) i++;
+        nums[j] = nums[i];
+
+        nums[i] = curr;
+        quickSort0629(nums,0,i);
+        quickSort0629(nums,i+1,r);
+    }
+
+
+    public static void quickSort0624(int[] nums,int l,int r){
+        if (l>=r) return;
+        int i = l;
+        int j = r;
+        int curr = nums[i];
+        while (i<j && curr < nums[j]) j--;
+        nums[i] = nums[j];
+        while (i<j && curr > nums[i]) i++;
+        nums[j] = nums[i];
+
+        nums[i] = curr;
+        quickSort(nums,0,i);
+        quickSort(nums,i+1,r);
+    }
+
+
+
+
+
+
+
+
+
+
+    public static void quickSort0623(int[] nums,int l,int r){
+        if (l>=r)return;
+        int i = l;
+        int j = r;
+        int curr = nums[i];
+        while (i<j && nums[j]>=curr)j--;
+        nums[i] = nums[j];
+        while (i<j && nums[i]<curr)i++;
+        nums[j] = nums[i];
+
+        nums[i] = curr;
+        quickSort0623(nums,0,i);
+        quickSort0623(nums,i+1,r);
+    }
+
+
+
+
+
+
+
 
 
     public static void quickSort0620(int[] nums,int l,int r){
