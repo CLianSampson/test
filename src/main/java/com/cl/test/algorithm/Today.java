@@ -16,13 +16,33 @@ public class Today {
         //bubbleSort0620(nums);
         //quickSort0623(nums,0,nums.length-1);
         //quickSort0624(nums,0,nums.length-1);
-        quickSort0629(nums,0,nums.length-1);
+        quickSort0706(nums,0,nums.length-1);
 
 
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
         }
     }
+
+
+
+    public static void quickSort0706(int[] nums,int l,int r){
+        if (l>=r) return;
+        int i = l;
+        int j = r;
+        int curr = nums[i];
+        while (i<j && nums[j] > curr) j--;
+        nums[i] = nums[j];
+        while (i<j && nums[i] < curr) i++;
+        nums[j] = nums[i];
+
+        nums[i] = curr;
+        quickSort0706(nums,0,i);
+        quickSort0706(nums,i+1,r);
+
+    }
+
+
 
 
     public static void quickSort0629(int[] nums,int l, int r){

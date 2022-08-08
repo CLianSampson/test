@@ -4,7 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * TODO 类功能描述
+ *  正则处理
+ *
+ *  常见正则汇总 https://blog.csdn.net/rentian1/article/details/81080760
  *
  * @author chenlian
  * @version 1.0
