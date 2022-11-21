@@ -11,5 +11,7 @@ public class MyTransmittableThreadLocal {
     public static void main(String[] args) {
         TransmittableThreadLocal transmittableThreadLocal = new TransmittableThreadLocal();
 
+        transmittableThreadLocal.set("hello");
+
     }
 }
