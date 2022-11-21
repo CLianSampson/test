@@ -2,11 +2,13 @@ package com.cl.test;
 
 import cn.hutool.core.date.DateTime;
 import com.cl.test.model.Student;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author chen lian
@@ -20,12 +22,26 @@ public class Test {
 
 
     public static  void  testDiffDistance(){
-        BigDecimal estimateDistance = new BigDecimal("109.50");
-        BigDecimal normalDistance = new BigDecimal("0.0");
-        BigDecimal test = new BigDecimal(normalDistance.subtract(estimateDistance).doubleValue());
+        //BigDecimal estimateDistance = new BigDecimal("109.50");
+        //BigDecimal normalDistance = new BigDecimal("0.0");
+        //BigDecimal test = new BigDecimal(normalDistance.subtract(estimateDistance).doubleValue());
 
         //System.out.println(normalDistance.subtract(estimateDistance).doubleValue());
-        System.out.println(test);
+        //System.out.println(test);
+
+        testFilter();
+    }
+
+    public static void testFilter(){
+        List<String> list = new ArrayList<>();
+//        list.add("aaaa");
+//        list.add("bbbb");
+        list.add(null);
+
+        list = list.stream().filter(Objects::nonNull).collect(Collectors.toList());
+
+        System.out.println(list);
+        System.out.println(CollectionUtils.isEmpty(list));
     }
 
     public static void testQuickSort(){

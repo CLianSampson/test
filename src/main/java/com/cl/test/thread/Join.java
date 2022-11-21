@@ -19,10 +19,12 @@ public class Join {
         thread1.join();
         thread2.join();
 
-//        thread2.start();
         thread1.start();
         thread2.start();
 
+        Thread.currentThread().join();
+
+        System.out.println("aaaaaaa");
     }
 
 }

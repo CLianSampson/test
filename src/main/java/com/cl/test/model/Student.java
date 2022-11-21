@@ -20,6 +20,12 @@ public class Student implements Person {
         this.name = name;
     }
 
+    public Student(){}
+
+    public Student(String name){
+        this.name = name;
+    }
+
     @Override
     public void eat() {
         System.out.println("start eat .....");
@@ -39,8 +45,12 @@ public class Student implements Person {
 
         ArrayList arrayList = new ArrayList();
         System.out.println("hello world");
+    }
 
-
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
