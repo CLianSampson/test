@@ -18,6 +18,45 @@ public class Test {
 
     public static void main(String[] args) throws ParseException {
         testDiffDistance();
+        testBigLoop();
+    }
+
+
+
+
+
+
+
+    public static void testBigLoop(){
+
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < 100000; i++) {
+            set.add(i);
+        }
+
+        long startTime1 = System.currentTimeMillis();
+        List<Integer> one = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            one.add(i);
+            set.contains(i);
+        }
+        long time1 = System.currentTimeMillis()-startTime1;
+        System.out.println("循环总耗时:" + time1);
+
+        List<Integer> two = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            two.add(i);
+        }
+
+        long startTiem = System.currentTimeMillis();
+        for (Integer a : one) {
+            for (Integer b : two) {
+                System.out.println(a+b);
+            }
+        }
+        long time = System.currentTimeMillis()-startTiem;
+        System.out.println("循环总耗时:" + time);
+
     }
 
 

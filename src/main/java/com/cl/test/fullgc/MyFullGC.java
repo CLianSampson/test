@@ -12,12 +12,14 @@ import java.util.List;
 public class MyFullGC {
 
     public static void main(String[] args) {
+        System.out.println("start");
         List<Student> list = new ArrayList<>();
         for (int i = 0; i < 1000000000; i++) {
             Student student = new Student();
             student.setName("zhangsan");
             list.add(student);
         }
+        System.out.println("end");
     }
 
 }
