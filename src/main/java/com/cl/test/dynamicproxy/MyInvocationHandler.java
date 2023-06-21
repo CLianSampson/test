@@ -16,6 +16,14 @@ public class MyInvocationHandler implements InvocationHandler {
         this.target = target;
     }
 
+    /**
+     *
+     * @param proxy  生成的代理对象
+     * @param method
+     * @param args
+     * @return
+     * @throws Throwable
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("------插入前置通知代码-------------");

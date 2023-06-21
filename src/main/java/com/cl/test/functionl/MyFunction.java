@@ -3,6 +3,7 @@ package com.cl.test.functionl;
 import com.cl.test.jiekou.Person;
 import com.cl.test.model.Student;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -32,6 +33,13 @@ public class MyFunction {
         test(()->{
             return new Student();
         });
+
+        Consumer<Student> studentConsumer = new Consumer<Student>() {
+            @Override
+            public void accept(Student student) {
+
+            }
+        };
 
 
     }

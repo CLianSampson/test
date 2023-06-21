@@ -38,10 +38,18 @@ public class MyProxy {
          * Proxy类中还有个将2~4步骤封装好的简便方法来创建动态代理对象，
          *其方法签名为：newProxyInstance(ClassLoader loader,Class<?>[] instance, InvocationHandler h)
          */
-        Person  iHello2 = (Person) Proxy.newProxyInstance(Person.class.getClassLoader(), // 加载接口的类加载器
+        Person  proxy = (Person) Proxy.newProxyInstance(Person.class.getClassLoader(), // 加载接口的类加载器
                 new Class[]{Person.class}, // 一组接口
                 new MyInvocationHandler(new Heihei())); // 自定义的InvocationHandler
-        iHello2.eat();
+
+        //proxy.eat();
+
+        //对代理继续代理，mybatis 插件使用这种方式
+        Person  proxy1 = (Person) Proxy.newProxyInstance(Person.class.getClassLoader(), // 加载接口的类加载器
+                new Class[]{Person.class}, // 一组接口
+                new MyInvocationHandler(proxy)); // 自定义的InvocationHandler
+
+        proxy1.eat();
 
     }
 

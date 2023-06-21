@@ -1,6 +1,7 @@
 package com.cl.test.cglib;
 
 import net.sf.cglib.core.DebuggingClassWriter;
+import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
 
 /**
@@ -20,7 +21,9 @@ public class CglibTest {
         // 设置enhancer对象的父类
         enhancer.setSuperclass(HelloService.class);
         // 设置enhancer的回调对象
-        enhancer.setCallback(new MyMethodInterceptor());
+        //enhancer.setCallback(new MyMethodInterceptor());
+        enhancer.setCallbacks(new Callback[]{new MyMethodInterceptor(),new MyMethodInterceptor1()});
+        enhancer.setCallbackFilter(new MyCallbackFilter());
         // 创建代理对象
         HelloService proxy= (HelloService)enhancer.create();
         // 通过代理对象调用目标方法
