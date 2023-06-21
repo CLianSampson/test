@@ -9,18 +9,28 @@ public class Join {
 
     public static void main(String[] args) throws InterruptedException {
         Thread thread1 = new Thread(() -> {
-            System.out.println("first");
+            for (int i=0;i<2000;i++) {
+                System.out.println("first");
+            }
         });
 
         Thread thread2 = new Thread(() -> {
-            System.out.println("second");
+            for (int i=0;i<2000;i++) {
+                System.out.println("second");
+            }
         });
 
-        thread1.join();
         thread2.join();
+        thread1.join();
 
-        thread2.start();
         thread1.start();
+        thread2.start();
+
+        System.out.printf("ggggggggggggggggggggg");
+
+
+
+
 
     }
 

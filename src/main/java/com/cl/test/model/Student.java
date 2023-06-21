@@ -10,7 +10,19 @@ import java.util.ArrayList;
  */
 public class Student implements Person {
 
-   private String name;
+    private static String school = "whptl";
+
+    private String name;
+
+    private Integer age;
+
+    public static String getSchool() {
+        return school;
+    }
+
+    public static void setSchool(String school) {
+        Student.school = school;
+    }
 
     public String getName() {
         return name;
@@ -18,6 +30,14 @@ public class Student implements Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     @Override
