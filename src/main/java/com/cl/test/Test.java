@@ -1,8 +1,17 @@
 package com.cl.test;
 
 import cn.hutool.core.date.DateTime;
+import cn.hutool.core.util.RandomUtil;
+import com.cl.test.config.MyConfig;
 import com.cl.test.model.Student;
+import org.apache.catalina.startup.Tomcat;
+import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebApplicationContext;
+import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -17,8 +26,19 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) throws ParseException {
-        testDiffDistance();
-        testBigLoop();
+
+        System.out.println(RandomUtil.randomInt(0, 1));
+
+//        testDiffDistance();
+//        testBigLoop();
+
+        WebApplicationContext context = new AnnotationConfigServletWebApplicationContext(MyConfig.class);
+
+        DispatcherServlet servlet = new DispatcherServlet(context);
+
+        Tomcat tomcat = new Tomcat();
+        tomcat.addServlet("app","servlet",DispatcherServlet.class.getName());
+
     }
 
 

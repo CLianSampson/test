@@ -16,7 +16,12 @@ public class Today {
         //bubbleSort0620(nums);
         //quickSort0623(nums,0,nums.length-1);
         //quickSort0624(nums,0,nums.length-1);
-        quickSort0706(nums,0,nums.length-1);
+        //quickSort0706(nums,0,nums.length-1);
+
+        //标准
+        //bubbleSort20230705(nums);
+        //错误冒泡排序，虽然能实现
+        bubbleSortttt(nums);
 
 
         for (int i = 0; i < nums.length; i++) {
@@ -137,11 +142,10 @@ public class Today {
     }
 
 
-
-
-
-
-
+    /**
+     * 错误方法，虽然也能成功
+     *
+     */
     public static void bubbleSortttt(int[] nums){
         int l = nums.length;
         for (int i = 0; i < l; i++) {
@@ -203,6 +207,56 @@ public class Today {
         quickSort(nums,i+1,r);
     }
     **/
+
+
+
+
+
+
+
+
+
+
+    public static void bubbleSort20230705(int[] array){
+        int length = array.length;
+        for (int i = 0; i < length; i++) {
+            for (int j = 1; j < length-i; j++) {
+                if (array[j-1] > array[j]){
+                    int temp = array[j-1];
+                    array[j-1] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
