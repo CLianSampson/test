@@ -1,6 +1,7 @@
 package com.cl.test.algorithm;
 
 
+import com.cl.test.algorithm.sort.BubbleSort;
 
 /**
  * @author chen lian
@@ -9,7 +10,7 @@ package com.cl.test.algorithm;
 public class Today {
 
     public static void main(String[] args) {
-        int[] nums = {55,12,52,1,8,6,100,100,52};
+        int[] nums = {55,12,80,1,8,6,90,100,52};
         //quickSort(nums,0,nums.length-1);
         //bubbleSortttt(nums);
         //quickSort(nums,0,nums.length-1);
@@ -21,8 +22,10 @@ public class Today {
         //标准
         //bubbleSort20230705(nums);
         //错误冒泡排序，虽然能实现
-        bubbleSortttt(nums);
+        //bubbleSortttt(nums);
+        //bubbleSort0706(nums);
 
+        qucikSort0706(nums,0,nums.length-1);
 
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
@@ -234,10 +237,51 @@ public class Today {
 
 
 
+    public static void bubbleSort0706(int[] array){
+        int l = array.length;
+        for (int i = 0; i < l; i++) {
+            for (int j = 0; j < l-i-1; j++) {
+                if (array[j] > array[j+1]){
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
+    }
 
+    /**
+     * [10,21,8,15,9,20]
+     * @param nums
+     * @param l
+     * @param r
+     */
+    public static void qucikSort0706(int[] nums,int l,int r){
+        if (l >= r){
+            return;
+        }
+        int i = l;
+        int j = r;
+        int temp = nums[i];
 
+        while (i < j){
+            while (i<j && nums[j] >= temp) {
+                j--;
+            }
+            //把大的放右边
+            nums[i] = nums[j];
+            while (i<j && nums[i] <= temp) {
+                i++;
+            }
+            //把小的放左边
+            nums[j] = nums[i];
+        }
+        //此时 左边都比 temp小, 右边都比temp大
+        nums[i] = temp;
 
-
+        qucikSort0706(nums,0,i-1);
+        qucikSort0706(nums,i+1,r);
+    }
 
 
 
