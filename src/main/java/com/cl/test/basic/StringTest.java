@@ -24,11 +24,11 @@ public class StringTest {
 //        student.setAge(13);
 
         Student xiaoli = new Student();
-        Student.setSchool("qinghua");
+        xiaoli.setSchool("qinghua");
 
         Student xiaoming = new Student();
 
-        System.out.println(Student.getSchool());
+        System.out.println(xiaoli.getSchool());
 
 
     }
