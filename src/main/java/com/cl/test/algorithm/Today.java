@@ -25,7 +25,8 @@ public class Today {
         //bubbleSortttt(nums);
         //bubbleSort0706(nums);
 
-        qucikSort0706(nums,0,nums.length-1);
+        //qucikSort0706(nums,0,nums.length-1);
+        qucikSort0707(nums,0,nums.length-1);
 
         for (int i = 0; i < nums.length; i++) {
             System.out.println(nums[i]);
@@ -282,6 +283,67 @@ public class Today {
         qucikSort0706(nums,0,i-1);
         qucikSort0706(nums,i+1,r);
     }
+
+
+
+
+
+    public static void qucikSort0707(int[] array,int l,int r){
+        if (l>=r){return;}
+
+        int i = l;
+        int j = r;
+        int curr = array[i];
+
+        while (i < j){
+            while (i<j && array[j] > curr) j--;
+            array[i] = array[j];
+            while (i<j && array[i] < curr) i++;
+            array[j] = array[i];
+        }
+
+        array[i] = curr;
+
+        qucikSort0707(array,0,i-1);
+        qucikSort0707(array,i+1,r);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
