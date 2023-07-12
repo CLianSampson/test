@@ -7,7 +7,7 @@ package com.cl.test.algorithm.base;
  */
 public class LinkedNode {
 
-    public int val;
+    public int valeue;
 
     public LinkedNode next;
 

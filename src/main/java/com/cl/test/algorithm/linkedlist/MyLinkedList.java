@@ -1,6 +1,7 @@
 package com.cl.test.algorithm.linkedlist;
 
 import com.cl.test.algorithm.base.LinkedNode;
+import jdk.nashorn.internal.objects.NativeUint8Array;
 
 /**
  * 链表类
@@ -10,15 +11,33 @@ import com.cl.test.algorithm.base.LinkedNode;
 public class MyLinkedList {
 
     public static void main(String[] args) {
+        int[] nums = {1,2,3,4,5,6,7,8};
+        LinkedNode linkedList = createLinkedList(nums);
+        printNode(linkedList);
 
+        //linkedList = traversal(linkedList);
+        linkedList = reverse(linkedList);
+        printNode(linkedList);
     }
+
+    public static void printNode(LinkedNode head){
+        if (head == null){
+            return;
+        }
+
+        do {
+            System.out.println(head.valeue + ",");
+            head = head.next;
+        }while (head != null);
+    }
+
 
     /**
      * 链表创建，注意头结点
-     * @param nums
-     * @return
+     * @param nums 数组
+     * @return 链表头结点
      */
-    public LinkedNode createLinkedList(int[] nums){
+    public static LinkedNode createLinkedList(int[] nums){
         if (nums.length == 0) return null;
 
         LinkedNode head = null;
@@ -27,11 +46,12 @@ public class MyLinkedList {
             if (head == null){
                 head = new LinkedNode();
                 current = head;
+                current.valeue = val;
                 continue;
             }
 
             LinkedNode node = new LinkedNode();
-            node.val = val;
+            node.valeue = val;
 
             current.next = node;
             current = node;
@@ -42,13 +62,93 @@ public class MyLinkedList {
 
 
 
-    public void traversal(LinkedNode head){
-        if (head == null) return;
+    public static LinkedNode traversal(LinkedNode old){
+        if (old == null) return null;
 
-        while (head != null) {
-            System.out.println(head.next.val);
-            head = head.next;
+        LinkedNode head = null;
+        LinkedNode current = null;
+
+        LinkedNode next = null;
+
+        while (old != null) {
+            if (old == null){
+                break;
+            }
+            System.out.println(old.valeue);
+
+            if (null == current){
+                current = old;
+
+                head = old;
+
+                old = old.next;
+                current.next = null;
+            }else {
+                head = old;
+
+                old = old.next;
+
+                head.next = current;
+
+                current = head;
+            }
         }
+
+        return head;
     }
+
+
+
+
+
+
+    public static LinkedNode reverse(LinkedNode old){
+        if (null == old){
+            return null;
+        }
+
+        LinkedNode current = null;
+        LinkedNode head = null;
+        //中间变量存储第二次循环遍历后的值, 用来赋值给current
+        LinkedNode temp = null;
+
+        while (old != null){
+            if (current == null){
+                current = old;
+                head = current;
+
+                old = old.next;
+                current.next = null;
+            }else {
+
+                temp = old;
+
+                head = old;
+
+                old = old.next;
+                head.next = current;
+
+                current = temp;
+
+            }
+        }
+
+        return head;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
