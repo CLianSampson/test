@@ -7,7 +7,7 @@ package com.cl.test.algorithm.base;
  */
 public class TreeNode {
 
-    public int val;
+    public int value;
 
     public TreeNode left;
 
