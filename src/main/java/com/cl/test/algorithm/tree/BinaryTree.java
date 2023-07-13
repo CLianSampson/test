@@ -3,6 +3,10 @@ package com.cl.test.algorithm.tree;
 import com.cl.test.algorithm.base.TreeNode;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * TODO 类功能描述
  *
@@ -25,7 +29,11 @@ public class BinaryTree {
 
         //prefixTraversal(head);
         //suffixTraversal(head);
-        middleTraversal(head);
+        //middleTraversal(head);
+
+        //prefixNoRecursion(head);
+        //middleNoRecursion(head);
+        suffixNoRecursion(head);
     }
 
 
@@ -35,9 +43,8 @@ public class BinaryTree {
         if (head == null){
             return;
         }
-
-        prefixTraversal(head.left);
         log.info(head.value + "\n");
+        prefixTraversal(head.left);
         prefixTraversal(head.right);
 
     }
@@ -48,8 +55,8 @@ public class BinaryTree {
             return;
         }
 
-        prefixTraversal(head.left);
-        prefixTraversal(head.right);
+        suffixTraversal(head.left);
+        suffixTraversal(head.right);
 
         log.info(head.value + "\n");
     }
@@ -60,12 +67,104 @@ public class BinaryTree {
             return;
         }
 
+        middleTraversal(head.left);
         log.info(head.value + "\n");
-
-        prefixTraversal(head.left);
-        prefixTraversal(head.right);
+        middleTraversal(head.right);
 
     }
+
+
+
+    public static void prefixNoRecursion(TreeNode head){
+        if (head == null){
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack();
+        stack.push(head);
+        while (!stack.empty()){
+
+            TreeNode current = stack.pop();
+            log.info(current.value + "\n");
+            if (current.right != null){
+                stack.push(current.right);
+            }
+
+            if (current.left != null){
+                stack.push(current.left);
+            }
+        }
+    }
+
+
+
+
+
+
+    public static void middleNoRecursion(TreeNode head){
+        if (head == null){
+            return;
+        }
+
+        List<TreeNode> duplicateList = new ArrayList<>(4);
+
+        Stack<TreeNode> stack = new Stack();
+        TreeNode current = head;
+
+        stack.push(current);
+
+        while (current != null || !stack.isEmpty()){
+
+            while (current.left != null){
+                stack.push(current.left);
+                current = current.left;
+            }
+
+            current = stack.pop();
+            if (!duplicateList.contains(current)) {
+                duplicateList.add(current);
+                log.info(current.value + "\n");
+            }
+            if (current.right != null){
+                stack.push(current.right);
+                current = current.right;
+            }
+        }
+    }
+
+
+
+
+    public static void suffixNoRecursion(TreeNode head){
+        if (head == null){
+            return;
+        }
+
+        //返回数据
+        Stack<TreeNode> result = new Stack<>();
+
+        Stack<TreeNode> stack = new Stack();
+        stack.push(head);
+        while (!stack.empty()){
+
+            TreeNode current = stack.pop();
+            log.info(current.value + "\n");
+            result.push(current);
+            if (current.left != null){
+                stack.push(current.left);
+            }
+
+            if (current.right != null){
+                stack.push(current.right);
+            }
+        }
+
+        while (!result.empty()){
+            log.info(result.pop().value + "\n");
+        }
+
+    }
+
 
 
 
