@@ -33,7 +33,13 @@ public class BinaryTree {
 
         //prefixNoRecursion(head);
         //middleNoRecursion(head);
-        suffixNoRecursion(head);
+        //suffixNoRecursion(head);
+
+        reverse(head);
+
+        //reverseNoRecursion(head);
+
+        prefixTraversal(head);
     }
 
 
@@ -167,6 +173,49 @@ public class BinaryTree {
 
 
 
+    public static void reverse(TreeNode head){
+        if (head == null){
+            return;
+        }
+
+        //已经将左右交换了
+        TreeNode temp = head.left;
+        head.left = head.right;
+        head.right = temp;
+
+        reverse(head.left);
+        reverse(head.right);
+    }
+
+
+    public static void reverseNoRecursion(TreeNode head){
+        if (head == null){
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(head);
+
+        while (!stack.empty()){
+            TreeNode current = stack.pop();
+
+            TreeNode temp = current.left;
+            current.left = current.right;
+            current.right = temp;
+
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+        }
+
+
+    }
+
+
+
 
     private static TreeNode init() {
         TreeNode head = new TreeNode();
@@ -197,7 +246,7 @@ public class BinaryTree {
         one.right = four;
 
         two.left = five;
-        two.right = six;
+        //two.right = six;
 
         return head;
     }
