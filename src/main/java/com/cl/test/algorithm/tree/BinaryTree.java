@@ -3,19 +3,21 @@ package com.cl.test.algorithm.tree;
 import com.cl.test.algorithm.base.TreeNode;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
- * TODO 类功能描述
  *
- *        0
- *      /   \
- *     1     2
- *    / \   /  \
- *   3   4 5    6
- *
+
+     *        0
+     *      /   \
+     *     1     2
+     *    / \   /  \
+     *   3   4 5    6
+     *  /            \
+     * 7              8
+ *    /                \
+ *   9                  10
  * @author chenlian
  * @version 1.0
  * @date 2023/7/12 17:35
@@ -35,11 +37,15 @@ public class BinaryTree {
         //middleNoRecursion(head);
         //suffixNoRecursion(head);
 
-        reverse(head);
-
+        //reverse(head);
         //reverseNoRecursion(head);
 
-        prefixTraversal(head);
+        //prefixTraversal(head);
+
+        levelTraversal(head);
+        levelTraversalPer(head);
+        log.info("最小深度是:{}",minDepth(head));
+        log.info("最大深度是:{}",maxDepth(head));
     }
 
 
@@ -210,11 +216,106 @@ public class BinaryTree {
                 stack.push(current.right);
             }
         }
+    }
 
+    public static void levelTraversal(TreeNode head){
+        if (head == null){
+            return;
+        }
 
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(head);
+        while (!queue.isEmpty()){
+            TreeNode current = queue.poll();
+            log.info("当前节点:{}",current.value);
+
+            if (current.left != null){
+                queue.offer(current.left);
+            }
+
+            if (current.right != null){
+                queue.offer(current.right);
+            }
+        }
     }
 
 
+    public static void levelTraversalPer(TreeNode head){
+        if (head == null){
+            return;
+        }
+
+        List<List<TreeNode>> totalList = new ArrayList<>();
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(head);
+        while (!queue.isEmpty()){
+            List<TreeNode> preList = new ArrayList<>();
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode current = queue.poll();
+                preList.add(current);
+
+                if (current.left != null){
+                    queue.offer(current.left);
+                }
+
+                if (current.right != null){
+                    queue.offer(current.right);
+                }
+            }
+            totalList.add(preList);
+        }
+
+        log.info("层级遍历的数据:");
+        for (List<TreeNode> list : totalList) {
+            List<String> valueList = list.stream().map(o -> String.valueOf(o.value)).collect(Collectors.toList());
+            log.info("数据:{}",String.join(",",valueList));
+        }
+    }
+
+
+    public static int minDepth(TreeNode head){
+        if (head == null){
+            return 0;
+        }
+
+        int depth = 0;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(head);
+        while (!queue.isEmpty()){
+            depth++;
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode current = queue.poll();
+                if (current.left == null){
+                    return depth;
+                }else {
+                    queue.offer(current.left);
+                }
+
+                if (current.right == null){
+                    return depth;
+                }else {
+                    queue.offer(current.right);
+                }
+            }
+        }
+
+        return depth;
+    }
+
+
+    public static int maxDepth(TreeNode head){
+        if (head == null){
+            return 0;
+        }
+
+        int leftDepth = maxDepth(head.left) + 1;
+        int rightDepth = maxDepth(head.right) + 1;
+        return Math.max(leftDepth, rightDepth);
+    }
 
 
     private static TreeNode init() {
@@ -239,6 +340,18 @@ public class BinaryTree {
         TreeNode six = new TreeNode();
         six.value = 6;
 
+        TreeNode seven = new TreeNode();
+        seven.value = 7;
+
+        TreeNode eight = new TreeNode();
+        eight.value = 8;
+
+        TreeNode nine = new TreeNode();
+        nine.value = 9;
+
+        TreeNode ten = new TreeNode();
+        ten.value = 10;
+
         head.left = one;
         head.right = two;
 
@@ -246,7 +359,14 @@ public class BinaryTree {
         one.right = four;
 
         two.left = five;
-        //two.right = six;
+        two.right = six;
+
+        three.left = seven;
+
+        seven.left = nine;
+
+        six.right = eight;
+        eight.right = ten;
 
         return head;
     }
