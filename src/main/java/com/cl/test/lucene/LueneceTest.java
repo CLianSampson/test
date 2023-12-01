@@ -21,6 +21,8 @@ import java.nio.file.Paths;
 /**
  * https://zhuanlan.zhihu.com/p/640661996
  *
+ *  lucene源码 专栏  https://www.zhihu.com/column/c_1392559802560634880
+ *
  * @author chenlian
  * @version 1.0
  * @date 2023/11/13 11:19
